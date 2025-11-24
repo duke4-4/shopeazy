@@ -30,7 +30,7 @@ export default async function Home() {
 
       {products.length === 0 ? (
         <div className="text-center py-12 bg-gray-50 rounded-lg">
-          <div className="text-6xl mb-4">🛒</div>
+          <div className="text-6xl mb-4"></div>
           <p className="text-gray-500 text-lg mb-2">No products found yet.</p>
           <p className="text-gray-400 mb-4">
             Let's add some sample products to get started!
