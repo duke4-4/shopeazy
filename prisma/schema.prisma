@@ -1,0 +1,62 @@
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  password      String
+  name          String?
+  address       String?
+  mobileNumber  String?
+  orders        Order[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  price       Float
+  image       String?
+  stock       Int      @default(0)
+  orderItems  OrderItem[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Order {
+  id        String      @id @default(cuid())
+  user      User        @relation(fields: [userId], onDelete: Cascade, references: [id])
+  userId    String
+  items     OrderItem[]
+  total     Float
+  status    OrderStatus @default(PENDING)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+}
+
+model OrderItem {
+  id        String  @id @default(cuid())
+  order     Order   @relation(fields: [orderId], onDelete: Cascade, references: [id])
+  orderId   String
+  product   Product @relation(fields: [productId], onDelete: Cascade, references: [id])
+  productId String
+  quantity  Int
+  price     Float
+}
+
+enum OrderStatus {
+  PENDING
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
