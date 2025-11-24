@@ -11,7 +11,11 @@
   "dependencies": {
     "next": "15.2.0",
     "react": "19.0.0",
-    "react-dom": "19.0.0"
+    "react-dom": "19.0.0",
+    "prisma": "5.0.0",
+    "@prisma/client": "5.0.0",
+    "next-auth": "4.0.0",
+    "bcryptjs": "2.4.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
