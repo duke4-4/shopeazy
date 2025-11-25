@@ -11,7 +11,7 @@ async function getProducts() {
     return [];
   }
 }
-
+//  random comment
 export default async function Home() {
   const products = await getProducts();
 
