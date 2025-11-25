@@ -1,6 +1,6 @@
 // app/page.tsx
 import { prisma } from "../lib/prisma";
-// import { Product } from "@prisma/client";
+import { Product } from "@prisma/client";
 
 async function getProducts() {
   try {
@@ -52,7 +52,7 @@ export default async function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* {products.map((product) => (
+            {products.map((product) => (
               <div
                 key={product.id}
                 className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow"
@@ -101,7 +101,7 @@ export default async function Home() {
                   </button>
                 </div>
               </div>
-            ))} */}
+            ))}
           </div>
         </>
       )}
